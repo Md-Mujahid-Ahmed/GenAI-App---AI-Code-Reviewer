@@ -48,7 +48,8 @@ if user_prompt:
     try:
         # Get AI response
         response = ai.chat(
-            model="models/text-bison-001",  # Replace with your available model
+            #model = ai.GenerativeModel(model_name="gemini-1.5-flash", system_instruction=sys_prompt)
+            model="models/gemini-1.5-flash",  # Replace with your available model
             messages=[
                 {"content": sys_prompt},  # System prompt as context
                 {"content": user_prompt}  # User input as prompt
