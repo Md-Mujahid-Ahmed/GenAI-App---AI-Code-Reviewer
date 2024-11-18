@@ -45,15 +45,15 @@ if user_prompt:
     st.markdown("### 🚀 Submitted Code")
     st.code(user_prompt, language="python")
 
-    # Prepare messages for the AI
-    messages = [
-        {"role": "system", "content": sys_prompt},
-        {"role": "user", "content": user_prompt}
-    ]
-
     try:
         # Get AI response
-        response = ai.chat(messages=messages)
+        response = ai.chat(
+            model="models/text-bison-001",  # Replace with your available model
+            messages=[
+                {"content": sys_prompt},  # System prompt as context
+                {"content": user_prompt}  # User input as prompt
+            ]
+        )
 
         # Validate and display AI response
         if response and "candidates" in response and len(response["candidates"]) > 0:
